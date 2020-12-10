@@ -121,7 +121,7 @@ Use the getReviewByIndex function below to do the following:
 
 
 function getReviewByIndex(arr, index) {
-  return arr[index].name + " gave the restaurant a " + arr[index].rating + " star review, and their feedback was: " + arr[index].feedback;
+  return `${arr[index].name} gave the restaurant a ${arr[index].rating} star review, and their feedback was: ${arr[index].feedback}`;
 }
 console.log(getReviewByIndex(reviews, 4));
 
@@ -190,7 +190,7 @@ Use the getLongReviews function below to do the following:
 function getLongReviews(arr) {
     let newArr = [];
     for(let i = 0; i < arr.length; i++){
-      if(arr[i].feedback.split("").length >= 15){
+      if(arr[i].feedback.split(" ").length > 15){
         newArr.push(arr[i]);
       }
     }
@@ -216,11 +216,24 @@ Use the carMaker function below to do the following:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker(carBrand, carName, odometer) {
+    return {
+      carBrand,
+      carName,
+      odometer,
+      drive: function(miles) {
+        this.odometer = this.odometer + miles;
+        return this.odometer;
+      }
+    }
 }
 
+let jaguar = carMaker('Jaguar', 'The Black Pearl', 100);
+console.log(jaguar);
+
+jaguar.drive(10);
+
+console.log(jaguar);
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo(){
